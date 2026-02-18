@@ -1,0 +1,172 @@
+@charset "UTF-8";
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    font-family: "UD Digital Kyokasho", "UD Digi Kyokasho N-B", "Hiragino Kaku Gothic ProN", "BIZ UDPGothic", sans-serif;
+}
+
+/* 操作パネル */
+.control-panel {
+    background: #333;
+    color: #fff;
+    padding: 15px 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.controls {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.controls select {
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.control-panel button {
+    font-size: 16px;
+    padding: 8px 16px;
+    margin: 0 10px;
+    cursor: pointer;
+    background: #fff;
+    border: none;
+    border-radius: 4px;
+}
+
+/* 用紙レイアウト (A4 横) */
+.sheet {
+    width: 297mm;
+    height: 209mm;
+    background: white;
+    margin: 0 auto;
+    padding: 15mm; /* 印刷余白 */
+    box-sizing: border-box;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* ヘッダー */
+.header {
+    display: grid; 
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 20px;
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.main-title {
+    font-size: 24pt;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.instruction {
+    font-size: 14pt;
+    margin: 5px 0 0 0;
+}
+
+.meta-area {
+    text-align: right;
+    font-size: 12pt;
+    min-width: 300px;
+}
+
+.meta-row {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.name-box {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* 右寄せ */
+}
+
+.name-box span:first-child {
+    margin-right: 0; /* 文字とスペースの間隔はwidthで調整するためゼロに */
+}
+
+.name-line {
+    display: inline-block;
+    width: 12em; /* 全角7文字分のスペースを確保 */
+    border-bottom: none; /* 線を消す */
+}
+
+/* プレイエリア */
+.play-area {
+    flex-grow: 1;
+    position: relative;
+    border: 1px dashed #e0e0e0;
+}
+
+/* 数字（丸囲みデザイン） */
+.number-item {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    line-height: 34px;
+    text-align: center;
+    border-radius: 50%;
+    border: 2px solid #000;
+    background: #fff;
+    font-size: 18pt;
+    font-weight: bold;
+    box-sizing: border-box;
+    cursor: default;
+    z-index: 10;
+}
+
+/* フッター */
+.footer {
+    margin-top: 10px;
+    padding-top: 5px;
+    display: flex;
+    justify-content: flex-end; /* 右寄せ */
+    align-items: center;
+}
+
+.footer-logo {
+    height: 10mm; /* タテ10mm */
+    width: auto;
+}
+
+/* 印刷設定 */
+@media print {
+    @page {
+        size: A4 landscape;
+        margin: 0;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background: none;
+        -webkit-print-color-adjust: exact;
+    }
+    
+    .no-print {
+        display: none !important;
+    }
+
+    .sheet {
+        width: 297mm;
+        height: 210mm;
+        margin: 0;
+        padding: 15mm;
+        box-shadow: none;
+        border: none;
+    }
+
+    .play-area {
+        border: none;
+    }
+}

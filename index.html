@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数字つなぎメーカー Ver.2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="control-panel no-print">
+        <h1>数字つなぎ作成ツール</h1>
+        <div class="controls">
+            <label for="level-select">難易度：</label>
+            <select id="level-select" onchange="generateNumbers()">
+                <option value="easy">【初級】数字のみ (1〜10)</option>
+                <option value="normal-num">【中級】数字のみ (1〜20)</option>
+                <option value="normal-mix">【中級】数字・かな混合 (1→あ 〜 10→こ)</option>
+                <option value="hard-mix">【上級】数字・かな混合 (1→あ 〜 20→と)</option>
+            </select>
+        </div>
+        <div class="buttons">
+            <button onclick="generateNumbers()">🔄 配置をシャッフル</button>
+            <button onclick="window.print()">🖨️ 印刷する</button>
+        </div>
+        <p>※印刷設定で「横」を選んでください。</p>
+    </div>
+
+    <div class="sheet">
+        <header class="header">
+            <div class="title-area">
+                <h1 class="main-title">数字つなぎ</h1>
+                <p class="instruction">じゅんばんに、線でつなぎましょう。</p>
+            </div>
+            <div class="meta-area">
+                <div class="meta-row">
+                    <span>学習日：　　　月　　　日</span>
+                    <span>タイム：　　　分　　　秒</span>
+                </div>
+                <div class="name-box">
+                    <span>なまえ</span>
+                    <span class="name-line"></span>
+                </div>
+            </div>
+        </header>
+
+        <div id="play-area" class="play-area">
+            </div>
+
+        <footer class="footer">
+            <img src="images/nicotto-logo.png" alt="ロゴ" class="footer-logo">
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
